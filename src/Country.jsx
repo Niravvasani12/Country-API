@@ -9,19 +9,15 @@ export const Country = () => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
 
-  // API link
   const API =
     "https://restcountries.com/v3.1/all?fields=name,flags,region,capital,population,cca3";
 
-  // Fetch Date using API
   const fetchCountries = async () => {
     try {
       const res = await fetch(API);
       const data = await res.json();
-      console.log("Fetched data:", data);
-
-      // Added 2 sec letter Open the page
       const sortedData = data.sort((a, b) => b.population - a.population);
+
       setTimeout(() => {
         setCountries(sortedData);
         setLoading(false);
@@ -41,7 +37,12 @@ export const Country = () => {
   );
 
   if (loading) {
-    return <div className="loader"></div>;
+    return (
+      <div className="loader">
+        <h1>Loading...</h1>
+        {/* <img src="https://cdn.dribbble.com/userupload/22205935/file/original-fe83275190d3b29032a0af9188cfd518.gif" /> */}
+      </div>
+    );
   }
 
   if (error) return <h1>{error.message}</h1>;
@@ -49,7 +50,8 @@ export const Country = () => {
   return (
     <section className="container">
       <header>
-        <h1> Explore Countries</h1>
+        <h1>Explore Countries</h1>
+
         <AuthorBadge />
       </header>
       <div className="country-search">
@@ -59,7 +61,8 @@ export const Country = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-      </div>
+      </div>{" "}
+      <h2 className="year"> Note : this data is Based On 2021/22 yr</h2>
       <ul className="cards">
         {searchData.map((country, index) => (
           <CountryCard

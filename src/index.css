@@ -23,6 +23,9 @@ body {
   height: 50vh;
 }
 
+.year {
+  align-items: center;
+}
 h1,
 h2,
 h3,
@@ -35,7 +38,7 @@ h6 {
 h1 {
   font-size: 5.4rem;
   font-weight: bold;
-  color: #000000 !important;
+  color: #ffffff !important;
   text-align: center;
 }
 
