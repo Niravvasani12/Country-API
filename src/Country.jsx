@@ -9,15 +9,18 @@ export const Country = () => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
 
+  // API link
   const API =
     "https://restcountries.com/v3.1/all?fields=name,flags,region,capital,population,cca3";
 
+  // Fetch Date using API
   const fetchCountries = async () => {
     try {
       const res = await fetch(API);
       const data = await res.json();
       console.log("Fetched data:", data);
 
+      // Added 2 sec letter Open the page
       const sortedData = data.sort((a, b) => b.population - a.population);
       setTimeout(() => {
         setCountries(sortedData);
@@ -46,7 +49,7 @@ export const Country = () => {
   return (
     <section className="container">
       <header>
-        <h1>🌍 Explore Countries</h1>
+        <h1> Explore Countries</h1>
         <AuthorBadge />
       </header>
       <div className="country-search">
